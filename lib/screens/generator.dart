@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:password_manager_app/password_generator.dart';
 
@@ -25,7 +26,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
 
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(horizontal: 40.0),
+      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 50.0),
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       color: Theme.of(context).backgroundColor,
@@ -34,7 +35,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
         children: [
           //TextField Label and Slider Container
           Container(
-            height: MediaQuery.of(context).size.height / 2,
+            height: MediaQuery.of(context).size.height - 250,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -145,12 +146,16 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                           height: 50,
                           minWidth: 50,
                           shape: CircleBorder(side: BorderSide.none),
+                          elevation: 6,
                         ),
                       ),
                       //Copy Button
                       Container(
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Clipboard.setData(ClipboardData(
+                                text: this.generatedPassword.text));
+                          },
                           icon: Icon(FontAwesomeIcons.copy),
                           color: Colors.white,
                         ),
@@ -177,6 +182,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                   //Setting Switches
                   Row(
                     children: [
+                      //lowercase switch
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 6),
                         child: GestureDetector(
@@ -190,12 +196,13 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                             style: TextStyle(
                               color: this.lowerOn
                                   ? Theme.of(context).primaryColor
-                                  : Colors.white,
+                                  : Colors.white.withAlpha(20),
                               fontSize: 20,
                             ),
                           ),
                         ),
                       ),
+                      //uppercase switch
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 6),
                         child: GestureDetector(
@@ -209,12 +216,13 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                             style: TextStyle(
                               color: this.upperOn
                                   ? Theme.of(context).primaryColor
-                                  : Colors.white,
+                                  : Colors.white.withAlpha(20),
                               fontSize: 20,
                             ),
                           ),
                         ),
                       ),
+                      //numbers switch
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 6),
                         child: GestureDetector(
@@ -228,12 +236,13 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                             style: TextStyle(
                               color: this.numOn
                                   ? Theme.of(context).primaryColor
-                                  : Colors.white,
+                                  : Colors.white.withAlpha(20),
                               fontSize: 20,
                             ),
                           ),
                         ),
                       ),
+                      //special charachters switch
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 6),
                         child: GestureDetector(
@@ -247,7 +256,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                             style: TextStyle(
                               color: this.symOn
                                   ? Theme.of(context).primaryColor
-                                  : Colors.white,
+                                  : Colors.white.withAlpha(20),
                               fontSize: 20,
                             ),
                           ),
