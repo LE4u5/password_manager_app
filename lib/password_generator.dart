@@ -1,5 +1,6 @@
 import 'dart:math';
 
+//Password Generator Function
 String passwordGenerator({
   bool lower = true,
   bool upper = false,
@@ -20,12 +21,15 @@ String passwordGenerator({
     bool validPassword = false;
 
     while (!validPassword) {
+      //creates a new password string from array of available characters based on input parameters
       for (int i = 0; i < length; i++) {
         var ranNum = new Random();
         password.add(characters[ranNum.nextInt(characters.length - 1)]);
       }
-      //print(password);
-      if (parseChar(password, CharacterCodes.lowerCaseList) || (lower == false)) {
+
+      //checks to see if generated code has atleast one of each selected character type
+      if (parseChar(password, CharacterCodes.lowerCaseList) ||
+          (lower == false)) {
         if (parseChar(password, CharacterCodes.upperCaseList) ||
             (upper == false)) {
           if (parseChar(password, CharacterCodes.numberList) ||
@@ -37,9 +41,9 @@ String passwordGenerator({
           }
         }
       }
-      //print(new String.fromCharCodes(password));
-      if (validPassword == false) {
-        //print('regenerating password...');
+
+      //empties password array if not a valid password
+      if (!validPassword) {
         password = [];
       }
     }
@@ -57,6 +61,7 @@ class CharacterCodes {
   static List<int> numberList = characterListGenerator(48, 57);
 }
 
+//Creates a list of characters based on range of character codes 
 List<int> characterListGenerator(int start, int end) {
   List<int> characters = [];
 
@@ -66,10 +71,10 @@ List<int> characterListGenerator(int start, int end) {
   return characters;
 }
 
+//checks to see if password has atleast on character from provided list of character codes
 bool parseChar(List<int> generatedList, List<int> codeList) {
   for (int i = 0; i < generatedList.length; i++) {
     if (codeList.any((element) => element == generatedList[i])) {
-      //print(generatedList[i]);
       return true;
     }
   }

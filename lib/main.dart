@@ -16,6 +16,7 @@ class PasswordManagerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'DevDav Password Manager',
       theme: ThemeData(
         accentColor: this.accentColor,
         backgroundColor: this.backgroundColor,
