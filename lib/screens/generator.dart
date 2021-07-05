@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:password_manager_app/password_generator.dart';
+import 'package:password_manager_app/screens/manager.dart';
 
 class PasswordGeneratorScreen extends StatefulWidget {
   const PasswordGeneratorScreen({Key? key}) : super(key: key);
@@ -33,6 +34,26 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
       child: Stack(
         alignment: Alignment.center,
         children: [
+          Positioned(
+            width: MediaQuery.of(context).size.width - 50,
+            top: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    print('button clicked');
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => PWManager()));
+                  },
+                  iconSize: 18,
+                  icon: Icon(FontAwesomeIcons.list),
+                  color: Colors.white,
+                  hoverColor: Colors.amber,
+                )
+              ],
+            ),
+          ),
           //TextField Label and Slider Container
           Container(
             height: MediaQuery.of(context).size.height - 250,
