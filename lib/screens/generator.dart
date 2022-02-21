@@ -44,7 +44,8 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                 IconButton(
                   onPressed: () {
                     print('button clicked');
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => PWManager()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PWManager()));
                   },
                   iconSize: 18,
                   icon: Icon(FontAwesomeIcons.list),
@@ -176,6 +177,8 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                           onPressed: () {
                             Clipboard.setData(ClipboardData(
                                 text: this.generatedPassword.text));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Copied to Clipboard',textAlign: TextAlign.center,),behavior: SnackBarBehavior.floating,));
                           },
                           icon: Icon(FontAwesomeIcons.copy),
                           color: Colors.white,

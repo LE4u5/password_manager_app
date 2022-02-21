@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:password_manager_app/screens/generator.dart';
 
 class PWManager extends StatefulWidget {
   const PWManager({Key? key}) : super(key: key);
@@ -12,13 +11,23 @@ class PWManager extends StatefulWidget {
 class _PWManagerState extends State<PWManager> {
   final iData = const [
     {"iName": "Netfix", "iUsername": "Tdav", "iPassword": "DSFsdfF89d"},
-    {"iName": "Google", "iUsername": "Tdav", "iPassword": "GHJ&*78gyhY"}
+    {"iName": "Google", "iUsername": "Tdav", "iPassword": "GHJ&*78gyhY"},
+    {"iName": "Netfix", "iUsername": "Tdav", "iPassword": "DSFsdfF89d"},
+    {"iName": "Google", "iUsername": "Tdav", "iPassword": "GHJ&*78gyhY"},
+    {"iName": "Netfix", "iUsername": "Tdav", "iPassword": "DSFsdfF89d"},
+    {"iName": "Google", "iUsername": "Tdav", "iPassword": "GHJ&*78gyhY"},
+    {"iName": "Netfix", "iUsername": "Tdav", "iPassword": "DSFsdfF89d"},
+    {"iName": "Google", "iUsername": "Tdav", "iPassword": "GHJ&*78gyhY"},
+    {"iName": "Netfix", "iUsername": "Tdav", "iPassword": "DSFsdfF89d"},
+    {"iName": "Google", "iUsername": "Tdav", "iPassword": "GHJ&*78gyhY"},
+    {"iName": "Netfix", "iUsername": "Tdav", "iPassword": "DSFsdfF89d"},
+    {"iName": "Google", "iUsername": "Tdav", "iPassword": "GHJ&*78gyhY"},
   ];
 
   @override
   Widget build(BuildContext context) {
     double headerHeight = 100;
-    double screenPadding = 20;
+    double screenPadding = 10;
     double listHeight =
         MediaQuery.of(context).size.height - headerHeight - (screenPadding * 2);
 
@@ -83,12 +92,58 @@ class _ListItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController unControler =
         new TextEditingController(text: this.iUsername);
+    TextEditingController pwControler =
+        new TextEditingController(text: this.iPassword);
+
     return Container(
+      padding: EdgeInsets.all(20),
+      margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+      decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromARGB(255, 20, 20, 20),
+              offset: Offset(0, 0),
+              spreadRadius: 1,
+              blurRadius: 10,
+            )
+          ]),
       child: Column(
         children: [
-          Text(iName),
+          Text(
+            iName,
+            style: TextStyle(color: Colors.white),
+          ),
           TextField(
             controller: unControler,
+            readOnly: true,
+            textAlignVertical: TextAlignVertical.center,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(vertical: 0),
+            ),
+            style: TextStyle(
+                color: Colors.white30,
+                fontSize: 24,
+                fontWeight: FontWeight.bold),
+          ),
+          TextField(
+            controller: pwControler,
+            readOnly: true,
+            textAlignVertical: TextAlignVertical.center,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(vertical: 0),
+              suffixIcon: Icon(
+                FontAwesomeIcons.eye,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+            style: TextStyle(
+                color: Colors.white30,
+                fontSize: 24,
+                fontWeight: FontWeight.bold),
           ),
         ],
       ),
