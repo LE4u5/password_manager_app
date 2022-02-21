@@ -34,27 +34,27 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Positioned(
-            width: MediaQuery.of(context).size.width - 50,
-            top: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    print('button clicked');
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => PWManager()));
-                  },
-                  iconSize: 18,
-                  icon: Icon(FontAwesomeIcons.list),
-                  color: Colors.white,
-                  hoverColor: Colors.amber,
-                )
-              ],
-            ),
-          ),
+          // Positioned(
+          //   width: MediaQuery.of(context).size.width - 50,
+          //   top: 0,
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.end,
+          //     mainAxisSize: MainAxisSize.max,
+          //     children: [
+          //       IconButton(
+          //         onPressed: () {
+          //           print('button clicked');
+          //           Navigator.push(context,
+          //               MaterialPageRoute(builder: (context) => PWManager()));
+          //         },
+          //         iconSize: 18,
+          //         icon: Icon(FontAwesomeIcons.list),
+          //         color: Colors.white,
+          //         hoverColor: Colors.amber,
+          //       )
+          //     ],
+          //   ),
+          // ),
           //TextField Label and Slider Container
           Container(
             height: MediaQuery.of(context).size.height - 250,
